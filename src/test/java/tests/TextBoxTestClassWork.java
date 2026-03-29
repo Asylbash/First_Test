@@ -21,7 +21,6 @@ public class TextBoxTestClassWork {
     @Test
     void fillFormTest() {
         open("/text-box");
-        $("#userName").setValue("Veleria");
         $("#userEmail").setValue("alex@egorov.com");
         $("#currentAddress").setValue("Some street 1");
         $("#permanentAddress").setValue("Another street 1");
@@ -31,6 +30,6 @@ public class TextBoxTestClassWork {
         $("#output #email").shouldHave(text("alex@egorov.com"));
         $("#output #currentAddress").shouldHave(text("Some street 1"));
         $("#output #permanentAddress").shouldHave(text("Another street 1"));
-        System.out.println("Hello");
+        
     }
 }
