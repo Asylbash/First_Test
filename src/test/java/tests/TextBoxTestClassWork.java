@@ -21,7 +21,6 @@ public class TextBoxTestClassWork {
     @Test
     void fillFormTest() {
         open("/text-box");
-        $("#userName").setValue("Veleria!!!!!!!");
         $("#userEmail").setValue("alex@egorov.com");
         $("#currentAddress").setValue("Some street 1");
         $("#permanentAddress").setValue("Another street 1");
