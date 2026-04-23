@@ -1,6 +1,7 @@
-package tests;
+package ru.zhyldyz.tests;
 
 import org.junit.jupiter.api.Test;
+import ru.zhyldyz.pageObject.TextBoxPage;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
@@ -23,5 +24,16 @@ public class TextBoxTest {
         $("#email").shouldHave(text("Email:Test@test.com"));
         $("#output #currentAddress").shouldHave(text("via Roma"));
         $("#output #permanentAddress").shouldHave(text("via Tuscolana"));
+    }
+
+    @Test
+    void textBoxTestPO(){
+        open("https://demoqa.com/text-box");
+        TextBoxPage textBoxPage = new TextBoxPage();
+        textBoxPage.typeUserName("Tomas");
+        textBoxPage.typeEmailName("Test@test.com");
+        textBoxPage.typeCurrentAddress("via Roma 1, Rome , Italy");
+        textBoxPage.typePermanentAddress("via Tuscolana 1, Rome , Italy");
+
     }
 }

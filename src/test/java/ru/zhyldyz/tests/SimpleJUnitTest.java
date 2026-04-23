@@ -1,4 +1,4 @@
-package tests;
+package ru.zhyldyz.tests;
 
 import org.junit.jupiter.api.*;
 
