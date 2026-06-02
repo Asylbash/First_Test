@@ -1,17 +1,17 @@
 package ru.zhyldyz.tests;
 
 import org.junit.jupiter.api.Test;
-import ru.zhyldyz.pageObject.TextBoxPage;
+import ru.zhyldyz.pages.TextBoxPage;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
-public class TextBoxTest {
+public class TextBoxTest extends TestBase{
 
     @Test
     void fillUpTextBoxTest() {
-        open("https://demoqa.com/text-box");
+        open("/text-box.html");
 
         $("#userName").setValue("Vanessa");
         $("#userEmail").setValue("Test@test.com");
@@ -28,7 +28,7 @@ public class TextBoxTest {
 
     @Test
     void textBoxTestPO(){
-        open("https://demoqa.com/text-box");
+        open("/text-box.html");
         TextBoxPage textBoxPage = new TextBoxPage();
         textBoxPage.typeUserName("Tomas");
         textBoxPage.typeEmailName("Test@test.com");
