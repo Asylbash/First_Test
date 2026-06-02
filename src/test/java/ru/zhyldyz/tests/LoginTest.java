@@ -27,5 +27,6 @@ public class LoginTest extends TestBase{
         $("[data-testid=submit-button]").click();
 
         $("[data-testid=error-message]").shouldHave(text("Wrong login or password"));
+        String expected = "New Search Result";
     }
 }
