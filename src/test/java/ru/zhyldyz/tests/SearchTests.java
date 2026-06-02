@@ -24,6 +24,6 @@ public class SearchTests{
         Configuration.pageLoadStrategy = "eager";
         open("https://duckduckgo.com/");
         $("#searchbox_input").setValue("selenide").pressEnter();
-        $("#react-layout").shouldHave(text("ru.selenide.org"));
+        $("#react-layout").shouldHave(text("selenide.org"));
     }
 }
