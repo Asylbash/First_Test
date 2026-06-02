@@ -1,4 +1,4 @@
-package ru.zhyldyz.pageObject;
+package ru.zhyldyz.pages;
 
 import com.codeborne.selenide.SelenideElement;
 
