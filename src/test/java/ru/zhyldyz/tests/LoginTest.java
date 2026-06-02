@@ -23,7 +23,7 @@ public class LoginTest extends TestBase{
         open("/login.html");
 
         $("[data-testid=login-input]").setValue("user1");
-        $("[data-testid=password-input]").setValue("WRONG PASSWORD");
+        $("[data-testid=password-input]").setValue("WRONG PASSWORDDDD!");
         $("[data-testid=submit-button]").click();
 
         $("[data-testid=error-message]").shouldHave(text("Wrong login or password"));
