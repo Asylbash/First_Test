@@ -17,13 +17,20 @@ sourceSets {
 
 dependencies {
     implementation(
-            'com.codeborne:selenide:7.0.4'
+            'com.codeborne:selenide:7.0.4',
+            compileOnly("org.projectlombok:lombok:1.18.46"),
+            annotationProcessor("org.projectlombok:lombok:1.18.46")
     )
     testImplementation(
           'org.assertj:assertj-core:3.25.3',
             'com.codeborne:selenide:7.0.4',
             'com.github.javafaker:javafaker:1.0.2',
-            'org.junit.jupiter:junit-jupiter:5.10.1'
+            'org.junit.jupiter:junit-jupiter:5.10.1',
+            'io.qameta.allure:allure-selenide:2.20.1',
+
+            testCompileOnly("org.projectlombok:lombok:1.18.46"),
+            testAnnotationProcessor("org.projectlombok:lombok:1.18.46")
+
     )
 }
 
