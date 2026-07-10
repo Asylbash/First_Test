@@ -2,7 +2,6 @@ package ru.zhyldyz.tests;
 
 import jdk.jfr.Description;
 import org.junit.jupiter.api.Test;
-import ru.zhyldyz.MainPage;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -15,8 +14,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class PracticeFormTest extends TestBase {
-
-    MainPage mainPage = new MainPage();
 
     @Test
     @Description("Verify successful form submission when all required fields are " +
@@ -42,6 +39,7 @@ public class PracticeFormTest extends TestBase {
         $("#hobbiesWrapper").$(byText("Sports")).click();
         $("#uploadPicture").uploadFromClasspath("pictures/foto (1).png");
         $("#currentAddress").setValue("Test address");
+
         $("#state").click();
         $("#stateCity-wrapper").$(byText("NCR")).click();
         $("#city").click();
@@ -49,7 +47,6 @@ public class PracticeFormTest extends TestBase {
         $("#submit").click();
 
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
-
         $(".table-responsive").shouldHave(text("Mario Rossi"));
         $(".table-responsive").shouldHave(text("test@test.com"));
         $(".table-responsive").shouldHave(text("Male"));
@@ -250,6 +247,5 @@ public class PracticeFormTest extends TestBase {
         $(".modal-content").shouldNot(appear);
 
     }
-
 
 }
