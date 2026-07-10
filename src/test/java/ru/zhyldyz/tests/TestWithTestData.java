@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 import static ru.zhyldyz.test_data.TestData.*;
 
 public class TestWithTestData extends TestBase {
@@ -17,25 +16,25 @@ public class TestWithTestData extends TestBase {
     void fillPracticeFormTest() {
 
         open("/automation-practice-form");
+        executeJavaScript("""
+                document.getElementById('fixedban')?.remove();
+                document.querySelector('footer')?.remove();
+                """);
 
         $("#firstName").setValue(firstname);
         $("#lastName").setValue(lastname);
         $("#userEmail").setValue(userEmail);
         $("#genterWrapper").$(byText(gender)).click();
         $("#userNumber").setValue(userNumber);
-        practiceFormPage.selectDateDatepicker(dateOfBirth);
-
+        practiceFormPage.selectDate(dayOfBirth, monthOfBirth, yearOfBirth);
         $("#subjectsInput").setValue(subject).pressEnter();
         $("#hobbiesWrapper").$(byText(hobby)).click();
         $("#uploadPicture").uploadFromClasspath(selectPic);
         $("#currentAddress").setValue(currentAddress);
         $("#state").click();
-        String state = practiceFormPage.selectRandomItem("//*[contains(@id,'react-select-3-option')]");
-
+        $("#stateCity-wrapper").$(byText(state)).click();
         $("#city").click();
-        String city = practiceFormPage.selectRandomItem("//*[contains(@id,'react-select-4-option')]");
-        System.out.println("Selected state: " + state);
-        System.out.println("Selected city: " + city);
+        $("#stateCity-wrapper").$(byText(city)).click();
         $("#submit").click();
 
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
@@ -43,7 +42,7 @@ public class TestWithTestData extends TestBase {
         $(".table-responsive").shouldHave(text(userEmail));
         $(".table-responsive").shouldHave(text(gender));
         $(".table-responsive").shouldHave(text(userNumber));
-        $(".table-responsive").shouldHave(text(practiceFormPage.formatDateForResult(dateOfBirth)));
+        $(".table-responsive").shouldHave(text((dayOfBirth + " " + monthOfBirth + "," + yearOfBirth)));
         $(".table-responsive").shouldHave(text(subject));
         $(".table-responsive").shouldHave(text(hobby));
         $(".table-responsive").shouldHave(text(practiceFormPage.getFileName(selectPic)));
