@@ -8,6 +8,7 @@ import ru.zhyldyz.common.ConfigReader;
 import ru.zhyldyz.enums.OrangeEndpoint;
 import ru.zhyldyz.pages.AdminPage;
 import ru.zhyldyz.pages.OrangeLoginPage;
+import ru.zhyldyz.pages.PracticeFormPage;
 
 import java.nio.file.Paths;
 
@@ -18,6 +19,7 @@ public class TestBase {
 
     OrangeLoginPage loginPage = new OrangeLoginPage();
     AdminPage adminPage = new AdminPage();
+    PracticeFormPage practiceFormPage = new PracticeFormPage();
 //    @BeforeAll
 //    static void setup() {
 //        Configuration.browserSize = "2560x1440";
@@ -49,7 +51,7 @@ public class TestBase {
                             .toString();
         } else if ("web".equalsIgnoreCase(target)) {
             Configuration.baseUrl =
-                    ConfigReader.getProperty("orangeHRMUrl");
+                    ConfigReader.getProperty("demoUrl");
         }
 
         Configuration.browser = "chrome";
@@ -57,21 +59,21 @@ public class TestBase {
         Configuration.pageLoadStrategy = "eager";
     }
 
-    @BeforeEach
-
-    void login() {
-
-        open(OrangeEndpoint.LOGIN.getEndpoint());
-
-        loginPage.login(
-
-                ConfigReader.getProperty("username"),
-
-                ConfigReader.getProperty("password")
-
-        );
-
-    }
+//    @BeforeEach
+//
+//    void login() {
+//
+//        open(OrangeEndpoint.LOGIN.getEndpoint());
+//
+//        loginPage.login(
+//
+//                ConfigReader.getProperty("username"),
+//
+//                ConfigReader.getProperty("password")
+//
+//        );
+//
+//    }
 
     @AfterEach
     void afterEach() {
