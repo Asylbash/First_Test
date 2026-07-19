@@ -5,10 +5,16 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import ru.zhyldyz.common.ConfigReader;
+import ru.zhyldyz.components.CalendarComponent;
+import ru.zhyldyz.components.SubmissionModal;
 import ru.zhyldyz.enums.OrangeEndpoint;
+import ru.zhyldyz.helpers.JavaScriptHelper;
 import ru.zhyldyz.pages.AdminPage;
 import ru.zhyldyz.pages.OrangeLoginPage;
 import ru.zhyldyz.pages.PracticeFormPage;
+import ru.zhyldyz.pages.TextBoxPage;
+import ru.zhyldyz.test_data.RandomPracticeFormData;
+import ru.zhyldyz.test_data.TestData;
 
 import java.nio.file.Paths;
 
@@ -17,28 +23,15 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class TestBase {
 
-    OrangeLoginPage loginPage = new OrangeLoginPage();
-    AdminPage adminPage = new AdminPage();
-    PracticeFormPage practiceFormPage = new PracticeFormPage();
-//    @BeforeAll
-//    static void setup() {
-//        Configuration.browserSize = "2560x1440";
-//        Configuration.baseUrl = "https://demoqa.com";
-//        Configuration.pageLoadStrategy = "eager";
-//        Configuration.timeout = 5000;
-//         Configuration.holdBrowserOpen = true;
-//    }
+    protected final OrangeLoginPage loginPage = new OrangeLoginPage();
+    protected final AdminPage adminPage = new AdminPage();
+    protected final PracticeFormPage practiceFormPage = new PracticeFormPage();
+    protected final CalendarComponent calendarComponent = new CalendarComponent();
+    protected final JavaScriptHelper javaScriptHelper = new JavaScriptHelper();
+    protected final TextBoxPage textBoxPage = new TextBoxPage();
+    protected final TestData testData = new TestData();
+    protected final SubmissionModal modal = new SubmissionModal();
 
-    //    @BeforeAll
-//    static void setup() {
-//       Configuration.baseUrl = Paths.get("src/test/resources/pages").toUri().toString();
-//        Configuration.browser = "chrome";
-//        Configuration.browserSize = "1024x768";
-//       Configuration.browserVersion = "148.0";
-//      Configuration.headless = true;
-//       Configuration.pageLoadStrategy = "eager";
-//       Configuration.timeout = 5000;
-//    }
     @BeforeAll
     static void setup() {
 

@@ -2,6 +2,7 @@ package ru.zhyldyz.tests;
 
 import org.junit.jupiter.api.Test;
 import ru.zhyldyz.pages.TextBoxPage;
+import ru.zhyldyz.test_data.RandomTextBox;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
@@ -28,12 +29,12 @@ public class TextBoxTest extends TestBase{
 
     @Test
     void textBoxTestPO(){
-        open("/text-box.html");
-        TextBoxPage textBoxPage = new TextBoxPage();
-        textBoxPage.typeUserName("Tomas");
-        textBoxPage.typeEmailName("Test@test.com");
-        textBoxPage.typeCurrentAddress("via Roma 1, Rome , Italy");
-        textBoxPage.typePermanentAddress("via Tuscolana 1, Rome , Italy");
-
+        RandomTextBox textBoxData = testData.randomTextBox();
+       textBoxPage.openTextBoxPage()
+               .typeUserName(textBoxData.userName())
+               .typeEmailName(textBoxData.userEmail())
+               .typeCurrentAddress(textBoxData.currentAddress())
+                .typePermanentAddress(textBoxData.permanentAddress())
+                .submitForm();
     }
 }
